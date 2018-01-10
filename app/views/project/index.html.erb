@@ -5,7 +5,7 @@
       <div id="new-project-popover" class="project-popover is-hidden">
         <%= form_with(model: @project) do |f| %>
           <div class="form-group">
-            <%= f.text_field :name, class: "form-control", placeholder: "Name this project", autofocus: true %>
+            <%= f.text_field :name, class: "form-control", id: "project-name-input", placeholder: "Name this project", autoFocus: true %>
           </div>
           <%= f.submit "Save", class: "btn btn-success" %>
           <button id="cancel-project-popover" class="btn btn-secondary">Cancel</button>
@@ -19,30 +19,9 @@
       <button class="btn ml-auto">...</button>
     </div>
   </div>
-  <div class="row home-projects">
-    <div class="col-md-4 project-col">
-      <a href="#" class="project-card">
-        <h4>Dummy Project</h4>
-        <p>What a wonderful project this will be!</p>
-      </a>
-    </div>
-    <div class="col-md-4 project-col">
-      <a href="#" class="project-card">
-        <h4>Wonderful Project</h4>
-        <p>This will be a most wonderful project</p>
-      </a>
-    </div>
-    <div class="col-md-4 project-col">
-      <a href="#" class="project-card">
-        <h4>Yet another project?</h4>
-        <p>Busy, busy!</p>
-      </a>
-    </div>
-    <div class="col-md-4 project-col">
-      <a href="#" class="project-card">
-        <h4>Lucky fourth project</h4>
-        <p>There has never been a luckier project than this one</p>
-      </a>
-    </div>
+  <div id="project-list" class="row home-projects">
+    <% @projects.each do |project| %>
+      <%= render "project_card", project: project %>
+    <% end %>
   </div>
 </main>
