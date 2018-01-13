@@ -11,15 +11,17 @@ class ProjectController < ApplicationController
       if @project.save
         format.js
       else
-        format.json { render json: @project.errors.messages, status: :unprocessable_entity}
+        format.json { render json: @project.errors.messages, status: :unprocessable_entity }
       end
     end
   end
 
-  private
-
-  def project_params
-    params.require(:project).permit(:name, :description)
+  def show
   end
 
+  private
+
+    def project_params
+      params.require(:project).permit(:name, :description)
+    end
 end
